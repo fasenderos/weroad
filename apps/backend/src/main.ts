@@ -23,22 +23,15 @@ async function bootstrap() {
 	const { port, address } = configService.get("server");
 
 	// Enable Fastify Helmet
-	// const helmetOptions =
-	// 	process.env.NODE_ENV === "production"
-	// 		? {}
-	// 		: {
-	// 				// This is added for make the the Graphql Playground happy
-	// 				contentSecurityPolicy: {
-	// 					directives: {
-	// 						"script-src": [
-	// 							`'self'`,
-	// 							`https: 'unsafe-inline'`,
-	// 							"cdn.jsdelivr.net",
-	// 						],
-	// 					},
-	// 				},
-	// 			};
-	// await app.register(fastifyHelmet, helmetOptions);
+	const helmetOptions = {
+		// This is added for make the Graphql Playground happy
+		contentSecurityPolicy: {
+			directives: {
+				"script-src": [`'self'`, `https: 'unsafe-inline'`, "cdn.jsdelivr.net"],
+			},
+		},
+	};
+	await app.register(fastifyHelmet, helmetOptions);
 
 	app.enableCors({
 		origin: ["http://localhost:3000"],

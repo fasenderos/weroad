@@ -84,7 +84,7 @@ const props = defineProps<{
 	checkAvailability: () => void;
 }>();
 
-const app = useNuxtApp()
+const app = useNuxtApp();
 const VALIDATION_TEXT = {
 	EMAIL_VALID: "Please enter a valid email address",
 	EMAIL_REQUIRED: "Pleae enter your email address",
@@ -118,7 +118,7 @@ const { handleSubmit, isSubmitting, values, resetForm } = useForm({
 	initialValues,
 });
 
-const toast = app.$toast
+const toast = app.$toast;
 const totalPrice = computed(
 	() => (props.travel?.price ?? 0) * (values?.seats ?? 0),
 );

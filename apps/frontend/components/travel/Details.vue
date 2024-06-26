@@ -118,7 +118,7 @@ watch(
 	() => result.value?.availability,
 	(newValue, oldValue) => {
 		if (typeof newValue === "number") {
-            const cart = getValidCart(travel.id)
+			const cart = getValidCart(travel.id);
 			const available = (newValue ?? 0) + (cart?.lockedSeats ?? 0);
 			if (available !== oldValue) {
 				availableSeats.value = available ?? 0;

@@ -148,7 +148,7 @@ const props = defineProps<{
 	setStep: (step: number) => void;
 }>();
 
-const app = useNuxtApp()
+const app = useNuxtApp();
 const { travel } = props;
 const selectedMethod = ref("paypal");
 const cart = getValidCart(travel.id);

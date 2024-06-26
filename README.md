@@ -113,6 +113,9 @@ POSTGRES_PORT=postgresql_port
 POSTGRES_USERNAME=postgresql_username
 POSTGRES_PASSWORD=postgresql_password
 POSTGRES_DATABASE=postgresql_database
+
+SERVER_ADDRESS=server_address
+SERVER_PORT=server_port
 ```
 If you do not provide a `.env` file or do not set these variables explicitly, the application will attempt to use the following default values:
 
@@ -122,6 +125,9 @@ POSTGRES_PORT=5432
 POSTGRES_USERNAME=postgres
 POSTGRES_PASSWORD=password
 POSTGRES_DATABASE=weroad
+
+SERVER_ADDRESS=127.0.0.1
+SERVER_PORT=3001
 ```
 
 # License
