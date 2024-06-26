@@ -1,0 +1,75 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Booking {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: String!
+  travelId: String!
+  seatsReserved: Float!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Moods {
+  nature: Float!
+  relax: Float!
+  history: Float!
+  culture: Float!
+  party: Float!
+}
+
+type Travel {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  slug: String!
+  description: String!
+  startingDate: DateTime!
+  endingDate: DateTime!
+  price: Float!
+  moods: Moods!
+  maxCapacity: Float!
+}
+
+type Cart {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  email: String!
+  travelId: String!
+  lockedSeats: Float!
+  expiresAt: DateTime!
+}
+
+type Query {
+  travels: [Travel!]!
+  travel(id: String!): Travel!
+  availability(id: String!): Float!
+}
+
+type Mutation {
+  reserveBooking(input: ReserveBookingDto!): Booking!
+  initCart(input: CreateCartDto!): Cart!
+  resetCart(input: ResetCartDto!): Cart!
+}
+
+input ReserveBookingDto {
+  cartId: String!
+}
+
+input CreateCartDto {
+  email: String!
+  seats: Float!
+  travelId: String!
+}
+
+input ResetCartDto {
+  id: String!
+}
