@@ -126,7 +126,7 @@ const availableSeats = computed(() => props.availableSeats);
 const journey = computed(() => props.journey);
 const travel = computed(() => props.travel);
 
-// This is where you would send the form data to the server
+// Send the form data to the server
 const onSubmit = handleSubmit(
 	async (values) => {
 		try {
