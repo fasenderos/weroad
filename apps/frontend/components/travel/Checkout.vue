@@ -176,7 +176,7 @@ const { handleSubmit, resetForm } = useForm({
 
 const toast = app.$toast;
 
-// This is where you would send the form data to the server
+// Send the form data to the server
 const onSubmit = handleSubmit(
 	async (values) => {
 		try {
@@ -200,7 +200,7 @@ const onSubmit = handleSubmit(
 		});
 	},
 	(error) => {
-		// you can use it to scroll to the first error
+		// Scroll to the first error
 		document.documentElement.scrollTo({
 			top: 0,
 			behavior: "smooth",
