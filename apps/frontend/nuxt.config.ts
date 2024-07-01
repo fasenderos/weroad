@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	devtools: { enabled: true },
 	modules: [
 		"@nuxtjs/apollo",
 		"@nuxtjs/tailwindcss",
@@ -13,7 +12,8 @@ export default defineNuxtConfig({
 	apollo: {
 		clients: {
 			default: {
-				httpEndpoint: "http://127.0.0.1:3001/graphql",
+				httpEndpoint: `${ process.env.SERVER_URL ?? "http://127.0.0.1:3001/graphql"}`,
+				browserHttpEndpoint: "http://127.0.0.1:3001/graphql",
 				inMemoryCacheOptions: {
 					addTypename: false,
 				},

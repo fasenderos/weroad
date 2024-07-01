@@ -31,5 +31,8 @@
 		"vue-toastification": "^2.0.0-rc.5",
 		"vue3-apexcharts": "^1.5.3",
 		"yup": "^1.4.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.3.1"
 	}
 }
