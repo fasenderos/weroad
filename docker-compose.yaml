@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: weroad_frontend
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+      args:
+        - SERVER_URL=http://weroad_backend:3001/graphql
+    ports:
+      - '3000:3000'
+    networks:
+      - weroad-checkout
+    depends_on:
+      - backend
+
+  backend:
+    container_name: weroad_backend
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    ports:
+      - '3001:3001'
+    depends_on:
+      - db
+    networks:
+      - weroad-checkout
+    environment:
+      - POSTGRES_HOST=weroad_postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DATABASE=weroad
+      - SERVER_ADDRESS=0.0.0.0
+      - SERVER_PORT=3001
+
+  db:
+    container_name: weroad_postgres
+    image: postgres:13
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: weroad
+    networks:
+      - weroad-checkout
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
+networks:
+  weroad-checkout:
+    driver: bridge

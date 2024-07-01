@@ -2,27 +2,48 @@
 
 WeRoad Checkout is a monorepo project designed to handle both the frontend and backend of the WeRoad checkout system. This project uses Nuxt.js for the frontend and NestJS for the backend.
 
-## Prerequisites
+## Getting Started
+To get a local copy up and running, you can choose to use the ready to use procedure with `Docker Compose` or build the app by your self with `pnpm`.
+
+**Clone the repository:**
+
+```sh
+git clone https://github.com/fasenderos/wearoad.git
+cd wearoad
+```
+
+## Using Docker Compose
+### Prerequisites
+
+Ensure you have the following tools installed on your system:
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Start the project
+```sh
+docker-compose up --build
+```
+This command will build the Docker images and start the containers for the backend, frontend, and PostgreSQL database.
+
+### Seed the database
+You have to seed the database at least once after the containers are started
+
+```sh
+pnpm seed
+```
+
+## Using pnpm
+### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
 - You have installed [pnpm](https://pnpm.io/installation)
 - You have a running PostgreSQL database
 
-## Getting Started
-
-To get a local copy up and running, follow these steps.
-
 ### Installation
 
-1. **Clone the repository:**
-
-   ```sh
-   git clone https://github.com/fasenderos/wearoad.git
-   cd wearoad
-   ```
-
-2. **Environment Variable**
+1. **Environment Variable**
 
     Ensure you have the following environment variables set in your `.env` file in the `apps/backend` folder :
 
@@ -50,7 +71,7 @@ To get a local copy up and running, follow these steps.
     SERVER_PORT=3001
     ```
 
-3. **Install dependencies and set up the project:**
+2. **Install dependencies and set up the project:**
 
    ```sh
    pnpm bootstrap
